@@ -1,57 +1,18 @@
-# 2020语言与智能技术竞赛：事件抽取任务 比赛日志
+# lic2020_baselines
+some baselines for lic2020 (http://lic2020.cipsc.org.cn/)
 
+## 依赖
 
-## 赛前准备 2020/3/31
-
-报名后把比赛的信息保存下来，阅读了比赛的数据格式，提交格式等内容；
-整理思路，准备使用keras框架，BERT+BiLSTM+CRF方式做NER；
-
-## baseline运行 2020/4/1
-
-下载了苏神的baseline，准备先跑通一下。
-
-运行后到了计算的时候，发现服务器重启了...之前也出现过这样的情况，
-应该就是调用cuda的时候发生了错误，原因是版本不对。
-
-为了以后能够正常跑比赛，决定把所有的版本都做下升级：
-驱动: 440+
-tensorflow_gpu: 1.14
-cuda:1.10
-cuDNN: 7.4 
-
-各种折腾后终于完成了环境的版本升级，可以开始跑模型了。
-对代码稍做了修改，便于使用：
-
-训练模型：
-```
-python ee.py train
-```
-预测结果：
-
-```
-python ee.py predict
+```bash
+pip install bert4keras==0.7.1
 ```
 
-## 第1次提交 2020/4/3
+其他按需安装，建议`keras==2.3.1`、`tensorflow_gpu==1.14`，python2或python3均可。
 
-经过一个晚上的计算（估算了一下，大约需要6.5个小时），在训练集上得到了`F1=0.766`的结果。
-预测结果并提交，成绩为`0.776`：
-
-```
-团队成员用户名	precision	recall	f1_score	提交状态	提交时间
-	
-可西哥  0.807	0.748	0.776	完成	2020-04-03 08:50
-
-```
-
-
-## 使用BiLSTM
-
-看了下网络结构，目前是BERT+CRF的结构，应该可以再加上BiLSTM进行优化，
-LSTM层的大小设置为 `num_labels // 2`
-修改模型后另存为：`ee_bilstm.py`, 开始训练, 一轮迭代需要35分钟，20轮预计时间为：11.7小时
-
-训练集结果为0.767
-预测结果并提交，成绩为：0.791	0.749	0.769
+## 交流
+- 个人博客：https://spaces.ac.cn ; https://kexue.fm
+- QQ交流群：67729435
+- 微信群请加机器人微信号spaces_ac_cn
+- 欢迎测试自研语言模型: https://github.com/ZhuiyiTechnology/pretrained-models
 
 

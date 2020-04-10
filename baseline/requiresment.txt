@@ -1,0 +1,4 @@
+pylcs==0.0.6
+tensorflow_gpu==1.14
+keras==2.3.1
+bert4keras==0.6.9
